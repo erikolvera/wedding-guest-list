@@ -1,5 +1,5 @@
-erik_list = []
-melanie_list = []
+husband_list = []
+wife_list = []
 
 def show_menu():
     print("\n--- Wedding Guest List ---")
