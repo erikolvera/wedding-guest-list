@@ -15,6 +15,12 @@ def show_menu():
 def add_guest():
     print("Would you like to add to the husband's or wife's list?")
     husband_or_wife = input()
+    if husband_or_wife == "husband":
+        print("Passed")
+    elif husband_or_wife == "wife":
+        print("Passed as well")
+    else:
+        return False
     
 #case 2
 def remove_guest():
