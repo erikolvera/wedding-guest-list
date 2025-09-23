@@ -13,8 +13,7 @@ def show_menu():
 
 #case 1
 def add_guest():
-    print("Would you like to add to the husband's or wife's list?")
-    list_choice = input()
+    list_choice = input("Would you like to add to the husband's or wife's list? ")
     if list_choice == "husband":
         print("Passed")
     elif list_choice == "wife":
