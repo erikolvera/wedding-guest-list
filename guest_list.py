@@ -33,7 +33,9 @@ def see_total_count():
     print(len(combined_lists)) # print the total of guests from both husband and wife guest list
 
 # case 5 just exits the while loop
-
+def goodbye_message():
+    print("Goodbye!")
+    
 while True:
     show_menu()
     choice = input("Choose choices 1-5: ")
@@ -48,5 +50,6 @@ while True:
         case "4":
             see_total_count()
         case "5":
+            goodbye_message()
             break
 
