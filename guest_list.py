@@ -7,12 +7,13 @@ brides_list = []
 if os.path.exists("guest_lists.json"):
     with open("guest_lists.json", "r") as file:
         data = json.load(file)
-        grooms_list = data.get("husband", [])
-        brides_list = data.get("wife", [])
+        grooms_list = data.get("groom", [])
+        brides_list = data.get("bride", [])
 
 def save_lists():
     with open("guest_lists.json", "w") as file:
-        json.dump({"husband": grooms_list, "wife": brides_list}, file)
+        json.dump(dict(groom=grooms_list,
+                       bride=brides_list), file, indent=2)
 
 def show_menu():
     print("\n--- Wedding Guest List ---")
@@ -22,26 +23,36 @@ def show_menu():
     print("4. See total count")
     print("5. Exit")
 
-def case1_husband_choice():
-    guest_name = input("Who would you like to add? ")
-    grooms_list.append(guest_name)
-    save_lists()
-    print(f"{guest_name} added to the list")
+def case1_grooms_choice():
+    while True:
+        guest_name = input("Who would you like to add? ").strip()
+        if guest_name.lower() in ("done", "exit", "quit"):
+            break
+        else:
+            grooms_list.append(guest_name)
+            save_lists()
+            print(f"{guest_name} added to the list")
 
-def case1_wife_choice():
-    guest_name = input("Who would you like to add? ")
-    brides_list.append(guest_name)
-    save_lists()
-    print(f"{guest_name} added to the list")
+def case1_brides_choice():
+    while True:
+        guest_name = input("Who would you like to add? ").strip()
+        if guest_name.lower() in ("done", "exit", "quit"):
+            break
+        else:
+            brides_list.append(guest_name)
+            save_lists()
+            print(f"{guest_name} added to the list")
 
 
 #case 1
 def add_guest():
-    list_choice = input("Would you like to add to the husband's or wife's list? ")
-    if list_choice.lower() == "husband":
-        case1_husband_choice()
-    elif list_choice.lower() == "wife":
-        case1_wife_choice()
+    list_choice = input("Would you like to add to the grooms's or brides's list? ").strip()
+    if list_choice.lower() in ("groom", "grooms", "groom's"):
+        case1_grooms_choice()
+        return None
+    elif list_choice.lower() in ("bride", "brides", "bride's"):
+        case1_brides_choice()
+        return None
     else:
         return False
     
@@ -69,7 +80,7 @@ while True:
         case "1":
             add_guest()
         case "2":
-            break
+            pass
         case "3":
             view_guest_names()
         case "4":
