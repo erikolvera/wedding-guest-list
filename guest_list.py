@@ -58,11 +58,38 @@ def add_guest():
     
 #case 2
 def remove_guest():
-    pass
+    while True:
+        name_to_remove = input('Who are we removing? (or enter nothing to stop): ').strip()
+        if name_to_remove == '':
+            break
+        name_lower = name_to_remove.lower()
+
+        for name in grooms_list[:]:
+            if name.lower() == name_lower:
+                grooms_list.remove(name)
+                save_lists()
+                print(f"{name} removed from the groom's list")
+                break
+        else:
+            for name in brides_list[:]:
+                if name.lower() == name_lower:
+                    brides_list.remove(name)
+                    save_lists()
+                    print(f"{name} removed from the bride's list")
+                    break
+            else:
+                print("Name not in list")
+
+
+
 #case 3
 def view_guest_names():
-    # print(grooms_list)
-    pass
+    view_lists = input("View groom or bride list? ")
+    if view_lists.lower() in ("groom", "grooms", "broom's"):
+        print(grooms_list)
+    elif view_lists.lower() in ("bride", "brides", "bride's"):
+        print(brides_list)
+    # print(grooms_list + brides_list)
 
 # case 4
 def see_total_count():
@@ -80,7 +107,7 @@ while True:
         case "1":
             add_guest()
         case "2":
-            pass
+            remove_guest()
         case "3":
             view_guest_names()
         case "4":
