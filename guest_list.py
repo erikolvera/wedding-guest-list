@@ -46,15 +46,15 @@ def case1_brides_choice():
 
 #case 1
 def add_guest():
-    list_choice = input("Add to the groom or bride list? ").strip()
-    if list_choice.lower() in "groom":
+    list_choice = input("Add to the groom or bride list? Enter 1 or 2 "
+                        "\n 1. Groom "
+                        "\n 2. Bride ")
+    if list_choice == "1":
         case1_grooms_choice()
-        return None
-    elif list_choice.lower() in "bride":
+    elif list_choice == "2":
         case1_brides_choice()
-        return None
     else:
-        return False
+        print("Invalid choice: Enter 1 or 2")
     
 #case 2
 def remove_guest():
