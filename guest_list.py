@@ -25,8 +25,8 @@ def show_menu():
 
 def case1_grooms_choice():
     while True:
-        guest_name = input("Who would you like to add? ").strip()
-        if guest_name.lower() in ("done", "exit", "quit"):
+        guest_name = input("Who would you like to add? (or enter nothing to stop) ").strip()
+        if guest_name == '':
             break
         else:
             grooms_list.append(guest_name)
@@ -35,8 +35,8 @@ def case1_grooms_choice():
 
 def case1_brides_choice():
     while True:
-        guest_name = input("Who would you like to add? ").strip()
-        if guest_name.lower() in ("done", "exit", "quit"):
+        guest_name = input("Who would you like to add? (or enter nothing to stop) :").strip()
+        if guest_name == '':
             break
         else:
             brides_list.append(guest_name)
@@ -46,11 +46,11 @@ def case1_brides_choice():
 
 #case 1
 def add_guest():
-    list_choice = input("Would you like to add to the grooms's or brides's list? ").strip()
-    if list_choice.lower() in ("groom", "grooms", "groom's"):
+    list_choice = input("Add to the groom or bride list? ").strip()
+    if list_choice.lower() in "groom":
         case1_grooms_choice()
         return None
-    elif list_choice.lower() in ("bride", "brides", "bride's"):
+    elif list_choice.lower() in "bride":
         case1_brides_choice()
         return None
     else:
@@ -85,9 +85,9 @@ def remove_guest():
 #case 3
 def view_guest_names():
     view_lists = input("View groom or bride list? ")
-    if view_lists.lower() in ("groom", "grooms", "broom's"):
+    if view_lists.lower() in "groom":
         print(grooms_list)
-    elif view_lists.lower() in ("bride", "brides", "bride's"):
+    elif view_lists.lower() in "bride":
         print(brides_list)
     # print(grooms_list + brides_list)
 
